@@ -79,13 +79,13 @@ function createColorButtons() {
         newButton.style.backgroundColor = colorsArray[i];
         newButton.addEventListener("click", () => {
             chosenColor = colorsArray[i];
-            if (chosenColor !== "random") {
-
-                showColor.style.backgroundColor = chosenColor;
+            if (chosenColor === "random") {
+                showColor.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+                showColor.style.backgroundColor = ""; // Clear any existing background color
             } else {
-                showColor.style.backgroundImage = "linear-gradient( 45deg, red, purple, green, blue, orange, black, yellow, pink )"
+                showColor.style.backgroundImage = ""; // Clear any existing gradient
+                showColor.style.backgroundColor = chosenColor;
             }
-
         })
 
 
