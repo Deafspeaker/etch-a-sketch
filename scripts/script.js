@@ -73,7 +73,9 @@ function createColorButtons() {
 
         if (i === 0) {
             newButton.style.backgroundImage = "linear-gradient( 45deg, red, purple, green, blue, orange, black, yellow, pink )";
-        }
+        } else [
+            newButton.style.backgroundColor = colorsArray[i];
+        ]
 
 
         newButton.style.backgroundColor = colorsArray[i];
