@@ -67,11 +67,11 @@ reset.addEventListener("click", () => {
 function createColorButtons() {
     for (let i = 0; i < colorsArray.length; i++) {
 
-        
+
         const newButton = document.createElement("button");
         newButton.classList.add("color", colorsArray[i]);
-        
-        if ( i === 0) {
+
+        if (i === 0) {
             newButton.style.backgroundImage = "linear-gradient( 45deg, red, purple, green, blue, orange, black, yellow, pink )"
         }
 
@@ -79,8 +79,12 @@ function createColorButtons() {
         newButton.style.backgroundColor = colorsArray[i];
         newButton.addEventListener("click", () => {
             chosenColor = colorsArray[i];
-            showColor.style.backgroundColor = chosenColor;
-            showColor.style.backgroundColor = "linear-gradient( 45deg, red, purple, green, blue, orange, black, yellow, pink )"
+            if (chosenColor !== "random") {
+
+                showColor.style.backgroundColor = chosenColor;
+            } else {
+                showColor.style.backgroundImage = "linear-gradient( 45deg, red, purple, green, blue, orange, black, yellow, pink )"
+            }
 
         })
 
