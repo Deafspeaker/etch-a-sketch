@@ -80,7 +80,7 @@ function createColorButtons() {
         newButton.addEventListener("click", () => {
             chosenColor = colorsArray[i];
             showColor.style.backgroundColor = chosenColor;
-
+            showColor.style.backgroundColor = "linear-gradient( 45deg, red, purple, green, blue, orange, black, yellow, pink )"
 
         })
 
