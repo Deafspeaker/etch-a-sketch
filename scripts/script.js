@@ -78,35 +78,32 @@ function createColorButtons() {
         
                 // Set gradient for random button
                 if (i === 0) {
-                    // Reset any existing background properties
-                    newButton.style.background = "";
-                    newButton.style.backgroundColor = "";
-                    newButton.style.backgroundImage = "";
-                    
-                    // Apply gradient to random button
-                    newButton.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-                    newButton.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+                    // Add the gradient class for the random button
+                    newButton.classList.add("random-gradient");
+                    // Also set inline styles as backup
+                    newButton.style.cssText = `
+                        background: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
+                        background-image: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
+                        background-size: 100% 100%;
+                        background-position: center;
+                    `;
                 } else {
-                    // Set solid colors for other buttons
                     newButton.style.backgroundColor = colorsArray[i];
                 }
         
                 newButton.addEventListener("click", () => {
                     chosenColor = colorsArray[i];
                     if (chosenColor === "random") {
-                        // Reset all background properties first
-                        showColor.style.background = "";
-                        showColor.style.backgroundColor = "";
-                        showColor.style.backgroundImage = "";
-                        
-                        // Set both background and backgroundImage for maximum compatibility
-                        showColor.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-                        showColor.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+                        showColor.style.cssText = `
+                            background: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
+                            background-image: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
+                            background-size: 100% 100%;
+                            background-position: center;
+                        `;
+                        showColor.classList.add("random-gradient");
                     } else {
-                        // Reset gradient properties
-                        showColor.style.background = "";
-                        showColor.style.backgroundImage = "";
-                        // Set solid color
+                        showColor.style.cssText = '';
+                        showColor.classList.remove("random-gradient");
                         showColor.style.backgroundColor = chosenColor;
                     }
                 });
