@@ -71,11 +71,6 @@ function createColorButtons() {
         const newButton = document.createElement("button");
         newButton.classList.add("color", colorsArray[i]);
 
-        function createColorButtons() {
-            for (let i = 0; i < colorsArray.length; i++) {
-                const newButton = document.createElement("button");
-                newButton.classList.add("color", colorsArray[i]);
-        
                 // Set gradient for random button
                 if (i === 0) {
                     // Don't set any inline styles for the random button
@@ -88,21 +83,21 @@ function createColorButtons() {
                 newButton.addEventListener("click", () => {
                     chosenColor = colorsArray[i];
                     if (chosenColor === "random") {
-                        // Reset all background properties first
-                        showColor.style.background = "";
-                        showColor.style.backgroundColor = "";
-                        showColor.style.backgroundImage = "";
-                        
-                        // Set both background and backgroundImage for maximum compatibility
-                        showColor.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-                        showColor.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-                    } else {
-                        // Reset gradient properties
-                        showColor.style.background = "";
-                        showColor.style.backgroundImage = "";
-                        // Set solid color
-                        showColor.style.backgroundColor = chosenColor;
-                    }
+                // Reset all background properties first
+                showColor.style.background = "";
+                showColor.style.backgroundColor = "";
+                showColor.style.backgroundImage = "";
+                
+                // Set both background and backgroundImage for maximum compatibility
+                showColor.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+                showColor.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+            } else {
+                // Reset gradient properties
+                showColor.style.background = "";
+                showColor.style.backgroundImage = "";
+                // Set solid color
+                showColor.style.backgroundColor = chosenColor;
+            }
                 });
         
                 colors.appendChild(newButton);
