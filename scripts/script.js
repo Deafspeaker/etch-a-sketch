@@ -78,32 +78,29 @@ function createColorButtons() {
         
                 // Set gradient for random button
                 if (i === 0) {
-                    // Add the gradient class for the random button
-                    newButton.classList.add("random-gradient");
-                    // Also set inline styles as backup
-                    newButton.style.cssText = `
-                        background: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
-                        background-image: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
-                        background-size: 100% 100%;
-                        background-position: center;
-                    `;
+                    // Don't set any inline styles for the random button
+                    // Let the CSS class handle it
                 } else {
                     newButton.style.backgroundColor = colorsArray[i];
                 }
         
+        
                 newButton.addEventListener("click", () => {
                     chosenColor = colorsArray[i];
                     if (chosenColor === "random") {
-                        showColor.style.cssText = `
-                            background: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
-                            background-image: linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink);
-                            background-size: 100% 100%;
-                            background-position: center;
-                        `;
-                        showColor.classList.add("random-gradient");
+                        // Reset all background properties first
+                        showColor.style.background = "";
+                        showColor.style.backgroundColor = "";
+                        showColor.style.backgroundImage = "";
+                        
+                        // Set both background and backgroundImage for maximum compatibility
+                        showColor.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+                        showColor.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
                     } else {
-                        showColor.style.cssText = '';
-                        showColor.classList.remove("random-gradient");
+                        // Reset gradient properties
+                        showColor.style.background = "";
+                        showColor.style.backgroundImage = "";
+                        // Set solid color
                         showColor.style.backgroundColor = chosenColor;
                     }
                 });
