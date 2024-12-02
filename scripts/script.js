@@ -82,6 +82,7 @@ function createColorButtons() {
         
                 newButton.addEventListener("click", () => {
                     chosenColor = colorsArray[i];
+                    console.log(`this listener has color ${chosenColor}`);
                     if (chosenColor === "random") {
                 // Reset all background properties first
                 
@@ -99,33 +100,10 @@ function createColorButtons() {
         
                 colors.appendChild(newButton);
             }
+}
+
+
         
-
-        newButton.style.backgroundColor = colorsArray[i];
-        newButton.addEventListener("click", () => {
-            chosenColor = colorsArray[i];
-            if (chosenColor === "random") {
-                // Reset all background properties first
-                showColor.style.background = "";
-                showColor.style.backgroundColor = "";
-                showColor.style.backgroundImage = "";
-                
-                // Set both background and backgroundImage for maximum compatibility
-                showColor.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-                showColor.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-            } else {
-                // Reset gradient properties
-                showColor.style.background = "";
-                showColor.style.backgroundImage = "";
-                // Set solid color
-                showColor.style.backgroundColor = chosenColor;
-            }
- 
-        });
-
-
-        colors.appendChild(newButton);
-    } 
 
 
 function setDrawingMethod() {
