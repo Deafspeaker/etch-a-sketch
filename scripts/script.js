@@ -9,6 +9,7 @@ const showColor = document.querySelector(".showColor");
 const chooseMethod = document.querySelector("#drawMethod");
 let chosenColor = "";
 let chosenMethod = "moveOnly";
+let isDrawing = false;
 
 createColorButtons();
 
@@ -78,7 +79,7 @@ function createColorButtons() {
         } else {
             newButton.style.backgroundColor = colorsArray[i];
         }
-    
+
 
         newButton.addEventListener("click", () => {
             chosenColor = colorsArray[i];
@@ -107,9 +108,12 @@ function createColorButtons() {
 
     function setDrawingMethod() {
         const grids = document.querySelectorAll(".grid");
-        
-
         clearGridEventListeners(grids);
+
+
+        document.addEventListener("mouseup", () => {
+            isDrawing = false;
+        })
 
         gridAddEventListeners(grids);
 
@@ -170,11 +174,14 @@ function createColorButtons() {
                     break;
                 case "clickDrag":
                     grid.addEventListener("mousedown", () => {
-                      
+                        isDrawing = true;
                         grid.boundCheckColor();
                     });
                     grid.addEventListener("mousemove", () => {
-                        
+                        if (isDrawing) {
+
+                            grid.boundCheckColor();
+                        }
                     })
                     break;
 
