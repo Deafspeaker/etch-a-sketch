@@ -107,7 +107,7 @@ function createColorButtons() {
 
     function setDrawingMethod() {
         const grids = document.querySelectorAll(".grid");
-        let isDrawing = false;
+        
 
         clearGridEventListeners(grids);
 
@@ -175,7 +175,7 @@ function createColorButtons() {
                     break;
                 case "clickDrag":
                     grid.addEventListener("mousedown", () => {
-                        isDrawing = true;
+                      
                         grid.boundCheckColor();
                     });
                     grid.addEventListener("mousemove", () => {
