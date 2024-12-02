@@ -71,21 +71,21 @@ function createColorButtons() {
         const newButton = document.createElement("button");
         newButton.classList.add("color", colorsArray[i]);
 
-                // Set gradient for random button
-                if (i === 0) {
-                    newButton.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-                    newButton.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
-                } else {
-                    newButton.style.backgroundColor = colorsArray[i];
-                }
-        
-        
-                newButton.addEventListener("click", () => {
-                    chosenColor = colorsArray[i];
-                    console.log(`this listener has color ${chosenColor}`);
-                    if (chosenColor === "random") {
+        // Set gradient for random button
+        if (i === 0) {
+            newButton.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+            newButton.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+        } else {
+            newButton.style.backgroundColor = colorsArray[i];
+        }
+    
+
+        newButton.addEventListener("click", () => {
+            chosenColor = colorsArray[i];
+            console.log(`this listener has color ${chosenColor}`);
+            if (chosenColor === "random") {
                 // Reset all background properties first
-                
+
                 // Set both background and backgroundImage for maximum compatibility
                 showColor.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
                 showColor.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
@@ -96,100 +96,100 @@ function createColorButtons() {
                 // Set solid color
                 showColor.style.backgroundColor = chosenColor;
             }
-                });
-        
-                colors.appendChild(newButton);
-            }
+        });
 
-
-        
-
-
-function setDrawingMethod() {
-    const grids = document.querySelectorAll(".grid");
-    let isDrawing = false;
-
-    clearGridEventListeners(grids);
-
-
-    document.addEventListener("mouseup", () => {
-        isDrawing = false;
-    })
-
-    gridAddEventListeners(grids);
-
-
-}
-
-function checkColor(event) {
-
-    if (chosenColor === "random") {
-        this.style.backgroundColor = getRandomColor();
-    } else {
-        this.style.backgroundColor = chosenColor || "black";
-    }
-};
-
-
-
-function removeOldGrid(limit) {
-
-    const getGrid = document.querySelectorAll(".grid");
-    getGrid.forEach(grid => {
-        mainBoard.removeChild(grid)
-    })
-
-    // let gridDimension = mainBoard.clientWidth / limit;
-    const percentage = 100 / limit;
-
-
-    for (let i = 0; i < limit * (limit / 2); i++) {
-        const createNewGrid = document.createElement("div");
-        createNewGrid.style.height = `${percentage * 2}%`;
-        createNewGrid.style.width = `${percentage}%`;
-        createNewGrid.classList.add("grid");
-        mainBoard.appendChild(createNewGrid);
+        colors.appendChild(newButton);
     }
 }
 
-function clearGridEventListeners(grids) {
-
-    grids.forEach(grid => {
-        grid.removeEventListener('mouseover', grid.boundCheckColor);
-        grid.removeEventListener('mousedown', grid.boundCheckColor);
-        grid.removeEventListener("mousemove", grid.boundCheckColor);
-        grid.removeEventListener('click', grid.boundCheckColor);
-    });
 
 
-}
 
-function gridAddEventListeners(grids) {
+    function setDrawingMethod() {
+        const grids = document.querySelectorAll(".grid");
+        let isDrawing = false;
 
-    grids.forEach(grid => {
-        grid.boundCheckColor = checkColor.bind(grid);
+        clearGridEventListeners(grids);
 
-        switch (chosenMethod) {
-            case 'moveOnly':
-                grid.addEventListener('mouseover', grid.boundCheckColor);
-                break;
-            case "clickDrag":
-                grid.addEventListener("mousedown", () => {
-                    isDrawing = true;
-                    grid.boundCheckColor();
-                });
-                grid.addEventListener("mousemove", () => {
-                    if (isDrawing) {
 
-                        grid.boundCheckColor();
-                    }
-                })
-                break;
+        document.addEventListener("mouseup", () => {
+            isDrawing = false;
+        })
 
-            case "clickOnly":
-                grid.addEventListener("click", grid.boundCheckColor);
-                break;
+        gridAddEventListeners(grids);
+
+
+    }
+
+    function checkColor(event) {
+
+        if (chosenColor === "random") {
+            this.style.backgroundColor = getRandomColor();
+        } else {
+            this.style.backgroundColor = chosenColor || "black";
         }
-    });
+    };
 
-}
+
+
+    function removeOldGrid(limit) {
+
+        const getGrid = document.querySelectorAll(".grid");
+        getGrid.forEach(grid => {
+            mainBoard.removeChild(grid)
+        })
+
+        // let gridDimension = mainBoard.clientWidth / limit;
+        const percentage = 100 / limit;
+
+
+        for (let i = 0; i < limit * (limit / 2); i++) {
+            const createNewGrid = document.createElement("div");
+            createNewGrid.style.height = `${percentage * 2}%`;
+            createNewGrid.style.width = `${percentage}%`;
+            createNewGrid.classList.add("grid");
+            mainBoard.appendChild(createNewGrid);
+        }
+    }
+
+    function clearGridEventListeners(grids) {
+
+        grids.forEach(grid => {
+            grid.removeEventListener('mouseover', grid.boundCheckColor);
+            grid.removeEventListener('mousedown', grid.boundCheckColor);
+            grid.removeEventListener("mousemove", grid.boundCheckColor);
+            grid.removeEventListener('click', grid.boundCheckColor);
+        });
+
+
+    }
+
+    function gridAddEventListeners(grids) {
+
+        grids.forEach(grid => {
+            grid.boundCheckColor = checkColor.bind(grid);
+
+            switch (chosenMethod) {
+                case 'moveOnly':
+                    grid.addEventListener('mouseover', grid.boundCheckColor);
+                    break;
+                case "clickDrag":
+                    grid.addEventListener("mousedown", () => {
+                        isDrawing = true;
+                        grid.boundCheckColor();
+                    });
+                    grid.addEventListener("mousemove", () => {
+                        if (isDrawing) {
+
+                            grid.boundCheckColor();
+                        }
+                    })
+                    break;
+
+                case "clickOnly":
+                    grid.addEventListener("click", grid.boundCheckColor);
+                    break;
+            }
+        });
+
+    }
