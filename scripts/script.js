@@ -111,11 +111,6 @@ function createColorButtons() {
 
         clearGridEventListeners(grids);
 
-
-        document.addEventListener("mouseup", () => {
-            isDrawing = false;
-        })
-
         gridAddEventListeners(grids);
 
 
