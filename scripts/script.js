@@ -181,7 +181,7 @@ function createColorButtons() {
                         isDrawing = true;
                         grid.boundCheckColor(e);
                     });
-                    grid.addEventListener("mouseover", () => {
+                    grid.addEventListener("mouseover", (e) => {
                         if (isDrawing) {
 
                             grid.boundCheckColor(e);
@@ -191,7 +191,7 @@ function createColorButtons() {
                     grid.addEventListener("dragstrat", (e) => {
                         e.preventDefault();
 
-                    })
+                    });
                     break;
 
                 case "clickOnly":
