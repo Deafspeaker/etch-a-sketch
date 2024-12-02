@@ -191,7 +191,7 @@ function createColorButtons() {
                     grid.addEventListener("dragstrat", (e) => {
                         e.preventDefault();
 
-                    })''
+                    });
                     break;
 
                 case "clickOnly":
