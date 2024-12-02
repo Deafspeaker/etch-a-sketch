@@ -99,8 +99,7 @@ function createColorButtons() {
                 });
         
                 colors.appendChild(newButton);
-            };
-};
+            }
 
 
         
@@ -128,7 +127,7 @@ function checkColor(event) {
         this.style.backgroundColor = getRandomColor();
     } else {
         this.style.backgroundColor = chosenColor || "black";
-    };
+    }
 };
 
 
