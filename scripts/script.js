@@ -11,6 +11,10 @@ let chosenColor = "";
 let chosenMethod = "moveOnly";
 let isDrawing = false;
 
+document.addEventListener('mousedown', () => isDrawing = true);
+document.addEventListener('mouseup', () => isDrawing = false);
+
+
 createColorButtons();
 
 chooseMethod.addEventListener("change", function () {
@@ -173,16 +177,21 @@ function createColorButtons() {
                     grid.addEventListener('mouseover', grid.boundCheckColor);
                     break;
                 case "clickDrag":
-                    grid.addEventListener("mousedown", () => {
+                    grid.addEventListener("mousedown", (e) => {
                         isDrawing = true;
-                        grid.boundCheckColor();
+                        grid.boundCheckColor(e);
                     });
-                    grid.addEventListener("mousemove", () => {
+                    grid.addEventListener("mouseover", () => {
                         if (isDrawing) {
 
-                            grid.boundCheckColor();
+                            grid.boundCheckColor(e);
                         }
-                    })
+                    });
+
+                    grid.addEventListener("dragstrat", (e) => {
+                        e.preventDefault();
+
+                    })''
                     break;
 
                 case "clickOnly":
