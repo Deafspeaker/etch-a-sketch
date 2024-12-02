@@ -99,8 +99,8 @@ function createColorButtons() {
                 });
         
                 colors.appendChild(newButton);
-            }
-}
+            };
+};
 
 
         
