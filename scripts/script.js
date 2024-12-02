@@ -73,8 +73,8 @@ function createColorButtons() {
 
                 // Set gradient for random button
                 if (i === 0) {
-                    // Don't set any inline styles for the random button
-                    // Let the CSS class handle it
+                    newButton.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
+                    newButton.style.backgroundImage = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
                 } else {
                     newButton.style.backgroundColor = colorsArray[i];
                 }
@@ -84,9 +84,6 @@ function createColorButtons() {
                     chosenColor = colorsArray[i];
                     if (chosenColor === "random") {
                 // Reset all background properties first
-                showColor.style.background = "";
-                showColor.style.backgroundColor = "";
-                showColor.style.backgroundImage = "";
                 
                 // Set both background and backgroundImage for maximum compatibility
                 showColor.style.background = "linear-gradient(45deg, red, purple, green, blue, orange, black, yellow, pink)";
@@ -102,7 +99,7 @@ function createColorButtons() {
         
                 colors.appendChild(newButton);
             }
-        }
+        
 
         newButton.style.backgroundColor = colorsArray[i];
         newButton.addEventListener("click", () => {
@@ -124,13 +121,11 @@ function createColorButtons() {
                 showColor.style.backgroundColor = chosenColor;
             }
  
-        })
+        });
 
 
         colors.appendChild(newButton);
-    }
-}
-
+    } 
 
 
 function setDrawingMethod() {
