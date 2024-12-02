@@ -188,7 +188,7 @@ function createColorButtons() {
                         }
                     });
 
-                    grid.addEventListener("dragstrat", (e) => {
+                    grid.addEventListener("dragstart", (e) => {
                         e.preventDefault();
 
                     });
