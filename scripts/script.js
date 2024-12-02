@@ -26,7 +26,7 @@ function setNewGame() {
     chosenColor = "";
     showColor.style.background = "";
     showColor.style.backgroundImage = "";
-    showColor.style.backGroundColor = "black";
+    showColor.style.backgroundColor = "black";
     let limit = parseInt(prompt("How Many squares should we use? Limit 100" || 16));
 
     if (limit % 2 !== 0) {
