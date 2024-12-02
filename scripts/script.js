@@ -24,11 +24,12 @@ chooseMethod.addEventListener("change", function () {
 
 function setNewGame() {
     chosenColor = "";
+    let limit = parseInt(prompt("How Many squares should we use? Limit 100" || 16));
+
     showColor.style.background = "";
     showColor.style.backgroundImage = "";
     showColor.style.backgroundColor = "black";
-    let limit = parseInt(prompt("How Many squares should we use? Limit 100" || 16));
-
+    
     if (limit % 2 !== 0) {
         limit += 1;
     }
