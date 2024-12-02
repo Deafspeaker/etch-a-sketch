@@ -179,10 +179,7 @@ function createColorButtons() {
                         grid.boundCheckColor();
                     });
                     grid.addEventListener("mousemove", () => {
-                        if (isDrawing) {
-
-                            grid.boundCheckColor();
-                        }
+                        
                     })
                     break;
 
